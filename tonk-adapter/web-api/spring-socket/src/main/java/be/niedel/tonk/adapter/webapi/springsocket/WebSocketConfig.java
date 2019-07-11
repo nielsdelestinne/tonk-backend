@@ -1,4 +1,4 @@
-package be.niedel.tonk.adapter.webapi.springwebflux;
+package be.niedel.tonk.adapter.webapi.springsocket;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

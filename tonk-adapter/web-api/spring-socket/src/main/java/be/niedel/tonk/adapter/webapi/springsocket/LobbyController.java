@@ -1,4 +1,4 @@
-package be.niedel.tonk.adapter.webapi.springwebflux;
+package be.niedel.tonk.adapter.webapi.springsocket;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
