@@ -2,6 +2,7 @@ package be.niedel.tonk.adapter.webapi.springsocket;
 
 import org.springframework.stereotype.Component;
 
+import java.util.Collection;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -20,5 +21,9 @@ public class InMemorySessionRepository {
 
     public void remove(String sessionId) {
         sessionIdsPerUsername.remove(sessionId);
+    }
+
+    public Collection<String> getAllUsersnames() {
+        return sessionIdsPerUsername.values();
     }
 }

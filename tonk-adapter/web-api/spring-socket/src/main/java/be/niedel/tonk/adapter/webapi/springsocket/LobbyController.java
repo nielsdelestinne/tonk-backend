@@ -1,18 +1,33 @@
 package be.niedel.tonk.adapter.webapi.springsocket;
 
+import be.niedel.tonk.adapter.webapi.springsocket.messages.ChatMessage;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Controller;
-
-import static java.time.LocalDateTime.now;
 
 @Controller
 public class LobbyController {
 
+    private final InMemorySessionRepository repository;
+
+    public LobbyController(InMemorySessionRepository repository) {
+        this.repository = repository;
+    }
+
     @MessageMapping("/lobby-chat")
     @SendTo("/topic/lobby-chat-messages")
-    public OutputMessage send(Message message) throws Exception {
-        return new OutputMessage(message.getFrom(), message.getText(), now().toString());
+    public ChatMessage sendMesssage(@Payload ChatMessage message) {
+        return message;
     }
+
+    @MessageMapping("/lobby-online-users")
+    @SendTo("/topic/lobby-online-users-results")
+    public String[] getOnlineUsers() {
+        return repository.getAllUsersnames()
+                .toArray(new String[0]);
+    }
+
+
 
 }
