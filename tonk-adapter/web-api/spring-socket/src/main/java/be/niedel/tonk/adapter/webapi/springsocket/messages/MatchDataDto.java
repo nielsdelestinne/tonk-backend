@@ -3,14 +3,9 @@ package be.niedel.tonk.adapter.webapi.springsocket.messages;
 public class MatchDataDto {
 
     private String matchId;
-    private MatchDataForPlayerDto playerDataDto;
-    private MatchDataForPlayerDto otherPlayerDataDto;
-
-    public MatchDataDto(String matchId, MatchDataForPlayerDto playerDataDto, MatchDataForPlayerDto otherPlayerDataDto) {
-        this.matchId = matchId;
-        this.playerDataDto = playerDataDto;
-        this.otherPlayerDataDto = otherPlayerDataDto;
-    }
+    private String player;
+    private double positionX;
+    private double positionY;
 
     public String getMatchId() {
         return matchId;
@@ -21,21 +16,30 @@ public class MatchDataDto {
         return this;
     }
 
-    public MatchDataForPlayerDto getPlayerDataDto() {
-        return playerDataDto;
+    public String getPlayer() {
+        return player;
     }
 
-    public MatchDataDto setPlayerDataDto(MatchDataForPlayerDto playerDataDto) {
-        this.playerDataDto = playerDataDto;
+    public MatchDataDto setPlayer(String player) {
+        this.player = player;
         return this;
     }
 
-    public MatchDataForPlayerDto getOtherPlayerDataDto() {
-        return otherPlayerDataDto;
+    public double getPositionX() {
+        return positionX;
     }
 
-    public MatchDataDto setOtherPlayerDataDto(MatchDataForPlayerDto otherPlayerDataDto) {
-        this.otherPlayerDataDto = otherPlayerDataDto;
+    public MatchDataDto setPositionX(double positionX) {
+        this.positionX = positionX;
+        return this;
+    }
+
+    public double getPositionY() {
+        return positionY;
+    }
+
+    public MatchDataDto setPositionY(double positionY) {
+        this.positionY = positionY;
         return this;
     }
 }
