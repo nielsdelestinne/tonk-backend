@@ -1,11 +1,11 @@
 package be.niedel.tonk.adapter.webapi.springsocket.messages;
 
-public class ChatMessage {
+public class ChatMessageDto {
 
     private String from;
     private String text;
 
-    public ChatMessage(String from, String text) {
+    public ChatMessageDto(String from, String text) {
         this.from = from;
         this.text = text;
     }

@@ -1,6 +1,6 @@
 package be.niedel.tonk.adapter.webapi.springsocket.messages;
 
-public class MatchInvite {
+public class MatchInviteDto {
 
     private String matchId;
     private String player;
@@ -10,7 +10,7 @@ public class MatchInvite {
         return matchId;
     }
 
-    public MatchInvite setMatchId(String matchId) {
+    public MatchInviteDto setMatchId(String matchId) {
         this.matchId = matchId;
         return this;
     }
@@ -19,7 +19,7 @@ public class MatchInvite {
         return player;
     }
 
-    public MatchInvite setPlayer(String player) {
+    public MatchInviteDto setPlayer(String player) {
         this.player = player;
         return this;
     }
@@ -28,7 +28,7 @@ public class MatchInvite {
         return otherPlayer;
     }
 
-    public MatchInvite setOtherPlayer(String otherPlayer) {
+    public MatchInviteDto setOtherPlayer(String otherPlayer) {
         this.otherPlayer = otherPlayer;
         return this;
     }

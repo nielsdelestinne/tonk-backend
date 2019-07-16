@@ -8,13 +8,13 @@ import java.util.concurrent.ConcurrentHashMap;
 @Component
 public class InMemoryMatchRepository {
 
-    private final Map<String, MatchData> matchIdsPerMatchData;
+    private final Map<String, MatchInvite> matchIdsPerMatchData;
 
     public InMemoryMatchRepository() {
         matchIdsPerMatchData = new ConcurrentHashMap<>();
     }
 
-    public void add(String matchId, MatchData matchData) {
+    public void add(String matchId, MatchInvite matchData) {
         matchIdsPerMatchData.put(matchId, matchData);
     }
 
@@ -26,7 +26,7 @@ public class InMemoryMatchRepository {
         matchIdsPerMatchData.get(matchId);
     }
 
-    public static class MatchData {
+    public static class MatchInvite {
         private String player;
         private String otherPlayer;
 
@@ -34,7 +34,7 @@ public class InMemoryMatchRepository {
             return player;
         }
 
-        public MatchData setPlayer(String player) {
+        public MatchInvite setPlayer(String player) {
             this.player = player;
             return this;
         }
@@ -43,7 +43,7 @@ public class InMemoryMatchRepository {
             return otherPlayer;
         }
 
-        public MatchData setOtherPlayer(String otherPlayer) {
+        public MatchInvite setOtherPlayer(String otherPlayer) {
             this.otherPlayer = otherPlayer;
             return this;
         }

@@ -1,6 +1,6 @@
 package be.niedel.tonk.adapter.webapi.springsocket;
 
-import be.niedel.tonk.adapter.webapi.springsocket.messages.ChatMessage;
+import be.niedel.tonk.adapter.webapi.springsocket.messages.ChatMessageDto;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
@@ -17,7 +17,7 @@ public class LobbyController {
 
     @MessageMapping("/lobby-chat")
     @SendTo("/topic/lobby-chat-messages")
-    public ChatMessage sendMesssage(@Payload ChatMessage message) {
+    public ChatMessageDto sendMesssage(@Payload ChatMessageDto message) {
         return message;
     }
 
