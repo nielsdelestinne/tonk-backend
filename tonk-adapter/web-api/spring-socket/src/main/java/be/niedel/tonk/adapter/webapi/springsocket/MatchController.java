@@ -15,14 +15,12 @@ import java.util.List;
 @Controller
 public class MatchController {
 
-    private final InMemoryMatchRepository matchRepository;
     private final InMemorySessionRepository sessionRepository;
 
     private final CreateMatchUseCase createMatchUseCase;
 
-    public MatchController(InMemoryMatchRepository matchRepository, InMemorySessionRepository sessionRepository, CreateMatchUseCase createMatchUseCase) {
+    public MatchController(InMemorySessionRepository sessionRepository, CreateMatchUseCase createMatchUseCase) {
         this.sessionRepository = sessionRepository;
-        this.matchRepository = matchRepository;
         this.createMatchUseCase = createMatchUseCase;
     }
 
