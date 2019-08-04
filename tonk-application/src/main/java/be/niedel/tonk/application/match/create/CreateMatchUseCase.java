@@ -7,9 +7,9 @@ public class CreateMatchUseCase {
     private final MatchRepository repository;
     private final CreateMatchMapper mapper;
 
-    public CreateMatchUseCase(MatchRepository repository, CreateMatchMapper mapper) {
+    public CreateMatchUseCase(MatchRepository repository) {
         this.repository = repository;
-        this.mapper = mapper;
+        this.mapper = new CreateMatchMapper();
     }
 
     public MatchCreateResponse process(MatchCreateRequest request) {

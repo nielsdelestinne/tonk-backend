@@ -5,6 +5,9 @@ plugins {
 apply plugin: 'io.spring.dependency-management'
 
 dependencies {
+    implementation project(':tonk-application')
+    implementation project(':tonk-domain')
+    implementation project(':tonk-adapter-repository-in-memory-dummy')
     implementation 'org.springframework.boot:spring-boot-starter-webflux'
     implementation 'org.springframework.boot:spring-boot-starter-websocket'
 }

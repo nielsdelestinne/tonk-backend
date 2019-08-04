@@ -1,0 +1,10 @@
+plugins {
+    id 'org.springframework.boot' version '2.1.6.RELEASE'
+}
+
+apply plugin: 'io.spring.dependency-management'
+
+dependencies {
+    implementation project(':tonk-domain')
+    implementation 'org.springframework.boot:spring-boot-starter'
+}
