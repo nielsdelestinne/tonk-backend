@@ -18,4 +18,15 @@ public final class Match {
         return new Match(MatchId.create(randomUUID().toString()), player, otherPlayer);
     }
 
+    public MatchId getId() {
+        return id;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Player getOtherPlayer() {
+        return otherPlayer;
+    }
 }

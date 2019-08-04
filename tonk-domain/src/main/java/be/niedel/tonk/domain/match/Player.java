@@ -1,7 +1,5 @@
 package be.niedel.tonk.domain.match;
 
-import static java.util.UUID.randomUUID;
-
 public final class Player {
 
     private final PlayerId id;
@@ -12,7 +10,15 @@ public final class Player {
         this.username = username;
     }
 
-    public static Player create(String username) {
-        return new Player(PlayerId.create(randomUUID().toString()), username);
+    public static Player create(PlayerId playerId, String username) {
+        return new Player(playerId, username);
+    }
+
+    public PlayerId getId() {
+        return id;
+    }
+
+    public String getUsername() {
+        return username;
     }
 }

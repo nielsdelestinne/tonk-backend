@@ -2,10 +2,11 @@ package be.niedel.tonk.domain.match;
 
 public interface MatchRepository {
 
-    boolean add(MatchId matchId, Match match);
+    Match save(Match match);
+
+    Match get(MatchId matchId);
 
     boolean remove(MatchId matchId);
 
-    boolean get(MatchId matchId);
 
 }
