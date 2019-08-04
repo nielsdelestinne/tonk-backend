@@ -5,6 +5,11 @@ public class PlayerDto {
     private final String id;
     private final String username;
 
+    public PlayerDto() {
+        id = null;
+        username = null;
+    }
+
     public PlayerDto(String id, String username) {
         this.id = id;
         this.username = username;

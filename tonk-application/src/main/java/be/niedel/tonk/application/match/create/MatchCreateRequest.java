@@ -5,6 +5,11 @@ public class MatchCreateRequest {
     private final PlayerDto player;
     private final PlayerDto otherPlayer;
 
+    private MatchCreateRequest() {
+        player = null;
+        otherPlayer = null;
+    }
+
     private MatchCreateRequest(PlayerDto player, PlayerDto otherPlayer) {
         this.player = player;
         this.otherPlayer = otherPlayer;
