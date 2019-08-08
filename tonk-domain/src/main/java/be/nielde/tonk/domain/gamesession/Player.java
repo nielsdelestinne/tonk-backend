@@ -1,4 +1,4 @@
-package be.niedel.tonk.domain.match;
+package be.nielde.tonk.domain.gamesession;
 
 public final class Player {
 

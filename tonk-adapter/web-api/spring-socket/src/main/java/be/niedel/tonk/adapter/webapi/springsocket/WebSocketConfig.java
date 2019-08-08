@@ -1,5 +1,6 @@
 package be.niedel.tonk.adapter.webapi.springsocket;
 
+import be.niedel.tonk.adapter.webapi.springsocket.gamesession.GameSessionInterceptor;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;
@@ -33,7 +34,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureClientInboundChannel(ChannelRegistration registration) {
-        registration.interceptors(context.getBean(SessionChannelInterceptor.class));
+        registration.interceptors(context.getBean(GameSessionInterceptor.class));
     }
 
 

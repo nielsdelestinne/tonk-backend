@@ -1,4 +1,4 @@
-package be.niedel.tonk.adapter.webapi.springsocket;
+package be.niedel.tonk.adapter.webapi.springsocket.match;
 
 import be.niedel.tonk.adapter.webapi.springsocket.messages.MatchDataDto;
 import be.niedel.tonk.application.match.create.CreateMatchUseCase;
@@ -15,28 +15,20 @@ import java.util.List;
 @Controller
 public class MatchController {
 
-    private final InMemorySessionRepository sessionRepository;
-
     private final CreateMatchUseCase createMatchUseCase;
 
-    public MatchController(InMemorySessionRepository sessionRepository, CreateMatchUseCase createMatchUseCase) {
-        this.sessionRepository = sessionRepository;
+    public MatchController(CreateMatchUseCase createMatchUseCase) {
         this.createMatchUseCase = createMatchUseCase;
     }
 
     @MessageMapping("/register-match-invite")
     @SendTo("/topic/match-invites")
     public MatchCreateResponse createMatch(@Payload MatchCreateRequest matchCreateRequest) {
-        // TODO: Refactor, this check shouldn't be done here.
-        if (!sessionRepository.getAllUsersnames()
-                .containsAll(List.of(
-                        matchCreateRequest.getPlayer().getUsername(),
-                        matchCreateRequest.getOtherPlayer().getUsername()))) {
-            throw new IllegalArgumentException("At least one user was not signed in or does not exist...");
-        }
         return createMatchUseCase.process(matchCreateRequest);
     }
 
+
+    // TODO: Create useCase just as in LobbyController for messages
     @MessageMapping("/match/{matchId}")
     @SendTo("/topic/match/{matchId}")
     public MatchDataDto getMatchData(@DestinationVariable String matchId, @Payload MatchDataDto matchDataDto) {

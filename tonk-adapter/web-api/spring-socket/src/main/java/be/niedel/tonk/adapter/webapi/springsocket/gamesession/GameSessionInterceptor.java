@@ -1,8 +1,10 @@
-package be.niedel.tonk.adapter.webapi.springsocket;
+package be.niedel.tonk.adapter.webapi.springsocket.gamesession;
 
+import be.niedel.tonk.application.gamesession.create.CreateGameSessionUseCase;
+import be.niedel.tonk.application.gamesession.remove.RemoveGameSessionUseCase;
+import be.nielde.tonk.domain.gamesession.GameSessionId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
@@ -13,19 +15,22 @@ import static java.util.Objects.requireNonNull;
 import static java.util.Optional.ofNullable;
 
 @Component
-public class SessionChannelInterceptor implements ChannelInterceptor {
+public class GameSessionInterceptor implements ChannelInterceptor {
 
     private static final String MESSAGE_TYPE_FOR_CONNECT = "CONNECT";
     private static final String MESSAGE_TYPE_FOR_DISCONNECT = "DISCONNECT";
     private static final String HEADER_KEY_FOR_MESSAGE_TYPE = "simpMessageType";
     private static final String NATIVE_HEADER_KEY_FOR_USERNAME = "username";
 
-    private Logger logger = LoggerFactory.getLogger(SessionChannelInterceptor.class);
+    private Logger logger = LoggerFactory.getLogger(GameSessionInterceptor.class);
 
-    private final InMemorySessionRepository repository;
+    private final CreateGameSessionUseCase createGameSessionUseCase;
+    private final RemoveGameSessionUseCase removeGameSessionUseCase;
 
-    public SessionChannelInterceptor(@Autowired InMemorySessionRepository repository) {
-        this.repository = repository;
+    public GameSessionInterceptor(CreateGameSessionUseCase createGameSessionUseCase,
+                                  RemoveGameSessionUseCase removeGameSessionUseCase) {
+        this.createGameSessionUseCase = createGameSessionUseCase;
+        this.removeGameSessionUseCase = removeGameSessionUseCase;
     }
 
     @Override
@@ -44,20 +49,25 @@ public class SessionChannelInterceptor implements ChannelInterceptor {
             case MESSAGE_TYPE_FOR_DISCONNECT:
                 removeExistingSessionOnDisconnect(stompHeaderAccessor);
                 break;
-            default :
+            default:
                 break;
         }
     }
 
     private void removeExistingSessionOnDisconnect(StompHeaderAccessor stompHeaderAccessor) {
-        repository.remove(stompHeaderAccessor.getSessionId());
-        logger.info("Client DISCONNECTED: sessionId "+ stompHeaderAccessor.getSessionId());
+        if (removeGameSessionUseCase.process(GameSessionId.create(stompHeaderAccessor.getSessionId()))) {
+            logger.info("Client DISCONNECTED: sessionId " + stompHeaderAccessor.getSessionId());
+        } else {
+            logger.error("Client with sessionId " + stompHeaderAccessor.getSessionId()
+                    + "tried to disconnect but did not have a Game Session!");
+        }
     }
 
     private void storeNewSessionOnConnect(StompHeaderAccessor stompHeaderAccessor) {
-        String username = requireNonNull(stompHeaderAccessor.getNativeHeader(NATIVE_HEADER_KEY_FOR_USERNAME)).get(0);
+        String playerUsername = requireNonNull(stompHeaderAccessor
+                .getNativeHeader(NATIVE_HEADER_KEY_FOR_USERNAME)).get(0);
         String sessionId = stompHeaderAccessor.getSessionId();
-        repository.add(sessionId, username);
-        logger.info("New client CONNECTED: sessionId " + sessionId + ", username " + username);
+        createGameSessionUseCase.process(GameSessionId.create(sessionId), playerUsername);
+        logger.info("New client CONNECTED: sessionId " + sessionId + ", username " + playerUsername);
     }
 }

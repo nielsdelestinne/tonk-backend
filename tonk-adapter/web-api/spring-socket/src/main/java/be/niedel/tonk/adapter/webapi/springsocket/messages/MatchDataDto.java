@@ -1,5 +1,6 @@
 package be.niedel.tonk.adapter.webapi.springsocket.messages;
 
+// TODO: Refactor (player is still the username (should become id)),... to inspect!
 public class MatchDataDto {
 
     private String matchId;
