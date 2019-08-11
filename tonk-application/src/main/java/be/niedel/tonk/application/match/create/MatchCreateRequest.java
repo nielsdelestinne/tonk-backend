@@ -10,7 +10,7 @@ public class MatchCreateRequest {
         otherPlayer = null;
     }
 
-    private MatchCreateRequest(PlayerDto player, PlayerDto otherPlayer) {
+    MatchCreateRequest(PlayerDto player, PlayerDto otherPlayer) {
         this.player = player;
         this.otherPlayer = otherPlayer;
     }

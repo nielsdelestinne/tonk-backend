@@ -33,4 +33,5 @@ public class MatchCreateResponse {
     public PlayerDto getOtherPlayer() {
         return otherPlayer;
     }
+
 }
