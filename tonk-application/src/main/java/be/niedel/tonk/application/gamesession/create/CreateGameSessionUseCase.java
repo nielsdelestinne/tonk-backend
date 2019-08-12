@@ -1,8 +1,8 @@
 package be.niedel.tonk.application.gamesession.create;
 
-import be.nielde.tonk.domain.gamesession.GameSession;
-import be.nielde.tonk.domain.gamesession.GameSessionId;
-import be.nielde.tonk.domain.gamesession.GameSessionRepository;
+import be.niedel.tonk.domain.gamesession.GameSession;
+import be.niedel.tonk.domain.gamesession.GameSessionId;
+import be.niedel.tonk.domain.gamesession.GameSessionRepository;
 
 public class CreateGameSessionUseCase {
 

@@ -1,4 +1,4 @@
-package be.nielde.tonk.domain.gamesession;
+package be.niedel.tonk.domain.gamesession;
 
 public class PlayerId {
 

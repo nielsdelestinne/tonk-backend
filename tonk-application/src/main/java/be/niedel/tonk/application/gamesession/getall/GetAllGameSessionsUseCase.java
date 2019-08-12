@@ -1,7 +1,7 @@
 package be.niedel.tonk.application.gamesession.getall;
 
-import be.nielde.tonk.domain.gamesession.GameSession;
-import be.nielde.tonk.domain.gamesession.GameSessionRepository;
+import be.niedel.tonk.domain.gamesession.GameSession;
+import be.niedel.tonk.domain.gamesession.GameSessionRepository;
 
 import java.util.Collection;
 

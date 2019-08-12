@@ -1,8 +1,8 @@
 package be.niedel.tonk.application.match.create;
 
+import be.niedel.tonk.domain.gamesession.*;
 import be.niedel.tonk.domain.match.Match;
 import be.niedel.tonk.domain.match.MatchRepository;
-import be.nielde.tonk.domain.gamesession.*;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

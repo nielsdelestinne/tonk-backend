@@ -3,7 +3,7 @@ package be.niedel.tonk.adapter.webapi.springsocket.gamesession;
 import be.niedel.tonk.application.gamesession.create.CreateGameSessionUseCase;
 import be.niedel.tonk.application.gamesession.getall.GetAllGameSessionsUseCase;
 import be.niedel.tonk.application.gamesession.remove.RemoveGameSessionUseCase;
-import be.nielde.tonk.domain.gamesession.GameSessionRepository;
+import be.niedel.tonk.domain.gamesession.GameSessionRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

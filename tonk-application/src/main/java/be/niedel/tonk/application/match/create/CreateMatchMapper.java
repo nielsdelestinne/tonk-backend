@@ -1,9 +1,9 @@
 package be.niedel.tonk.application.match.create;
 
 import be.niedel.tonk.application.Mapper;
+import be.niedel.tonk.domain.gamesession.Player;
+import be.niedel.tonk.domain.gamesession.PlayerId;
 import be.niedel.tonk.domain.match.Match;
-import be.nielde.tonk.domain.gamesession.Player;
-import be.nielde.tonk.domain.gamesession.PlayerId;
 
 public class CreateMatchMapper implements Mapper<MatchCreateRequest, MatchCreateResponse, Match> {
 

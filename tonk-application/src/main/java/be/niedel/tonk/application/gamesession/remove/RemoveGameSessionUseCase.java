@@ -1,7 +1,7 @@
 package be.niedel.tonk.application.gamesession.remove;
 
-import be.nielde.tonk.domain.gamesession.GameSessionId;
-import be.nielde.tonk.domain.gamesession.GameSessionRepository;
+import be.niedel.tonk.domain.gamesession.GameSessionId;
+import be.niedel.tonk.domain.gamesession.GameSessionRepository;
 
 public class RemoveGameSessionUseCase {
 

@@ -1,7 +1,7 @@
 package be.niedel.tonk.application.match.create;
 
+import be.niedel.tonk.domain.gamesession.GameSessionRepository;
 import be.niedel.tonk.domain.match.MatchRepository;
-import be.nielde.tonk.domain.gamesession.GameSessionRepository;
 
 public class CreateMatchUseCase {
 

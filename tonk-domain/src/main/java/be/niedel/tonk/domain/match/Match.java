@@ -1,6 +1,6 @@
 package be.niedel.tonk.domain.match;
 
-import be.nielde.tonk.domain.gamesession.Player;
+import be.niedel.tonk.domain.gamesession.Player;
 
 import static java.util.UUID.randomUUID;
 

@@ -2,7 +2,7 @@ package be.niedel.tonk.adapter.webapi.springsocket.gamesession;
 
 import be.niedel.tonk.application.gamesession.create.CreateGameSessionUseCase;
 import be.niedel.tonk.application.gamesession.remove.RemoveGameSessionUseCase;
-import be.nielde.tonk.domain.gamesession.GameSessionId;
+import be.niedel.tonk.domain.gamesession.GameSessionId;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.Message;
