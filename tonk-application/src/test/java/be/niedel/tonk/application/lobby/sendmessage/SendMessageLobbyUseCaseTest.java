@@ -10,9 +10,9 @@ class SendMessageLobbyUseCaseTest {
     void process_givenAMessageToSend_thenSimplyReturnThatMessage() {
         // GIVEN
         LobbyMessageDto messageToSend = new LobbyMessageDto("JimTheSender", "Hello!");
+        SendMessageLobbyUseCase sendMessageLobbyUseCase = new SendMessageLobbyUseCase();
 
         // WHEN
-        SendMessageLobbyUseCase sendMessageLobbyUseCase = new SendMessageLobbyUseCase();
         LobbyMessageDto returnedMessage = sendMessageLobbyUseCase.process(messageToSend);
 
         // THEN
