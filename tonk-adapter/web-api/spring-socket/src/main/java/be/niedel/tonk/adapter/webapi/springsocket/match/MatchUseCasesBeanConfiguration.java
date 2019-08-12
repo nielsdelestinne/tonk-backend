@@ -1,6 +1,7 @@
 package be.niedel.tonk.adapter.webapi.springsocket.match;
 
 import be.niedel.tonk.application.match.create.CreateMatchUseCase;
+import be.niedel.tonk.application.match.sendmatchactivity.SendMatchActivityUseCase;
 import be.niedel.tonk.domain.match.MatchRepository;
 import be.nielde.tonk.domain.gamesession.GameSessionRepository;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +22,11 @@ public class MatchUseCasesBeanConfiguration {
     @Bean
     public CreateMatchUseCase createMatchUseCase() {
         return new CreateMatchUseCase(matchRepository, gameSessionRepository);
+    }
+
+    @Bean
+    public SendMatchActivityUseCase sendMatchActivityUseCase() {
+        return new SendMatchActivityUseCase();
     }
 
 }

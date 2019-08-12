@@ -1,9 +1,10 @@
 package be.niedel.tonk.adapter.webapi.springsocket.match;
 
-import be.niedel.tonk.application.match.sendmatchactivity.MatchActivityDto;
 import be.niedel.tonk.application.match.create.CreateMatchUseCase;
 import be.niedel.tonk.application.match.create.MatchCreateRequest;
 import be.niedel.tonk.application.match.create.MatchCreateResponse;
+import be.niedel.tonk.application.match.sendmatchactivity.MatchActivityDto;
+import be.niedel.tonk.application.match.sendmatchactivity.SendMatchActivityUseCase;
 import org.springframework.messaging.handler.annotation.DestinationVariable;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -14,9 +15,12 @@ import org.springframework.stereotype.Controller;
 public class MatchController {
 
     private final CreateMatchUseCase createMatchUseCase;
+    private final SendMatchActivityUseCase sendMatchActivityUseCase;
 
-    public MatchController(CreateMatchUseCase createMatchUseCase) {
+    public MatchController(CreateMatchUseCase createMatchUseCase,
+                           SendMatchActivityUseCase sendMatchActivityUseCase) {
         this.createMatchUseCase = createMatchUseCase;
+        this.sendMatchActivityUseCase = sendMatchActivityUseCase;
     }
 
     @MessageMapping("/register-match-invite")
@@ -29,7 +33,7 @@ public class MatchController {
     @MessageMapping("/match/{matchId}")
     @SendTo("/topic/match/{matchId}")
     public MatchActivityDto matchActivity(@DestinationVariable String matchId, @Payload MatchActivityDto matchActivityDto) {
-        return null;
+        return sendMatchActivityUseCase.process(matchActivityDto);
     }
 
 }
