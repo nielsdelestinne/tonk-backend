@@ -1,5 +1,7 @@
 # TONK
 
+[![Build Status](https://travis-ci.org/nielsdelestinne/tonk-backend.svg?branch=master)](https://travis-ci.org/nielsdelestinne/tonk-backend)
+
 **Tank Online (Tonk)**
 
 *Contains the back-end using Java and Spring WebSocket (among other technologies).*
