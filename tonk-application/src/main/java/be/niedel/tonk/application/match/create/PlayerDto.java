@@ -39,11 +39,4 @@ public class PlayerDto {
         return Objects.hash(id, username);
     }
 
-    @Override
-    public String toString() {
-        return "PlayerDto{" +
-                "id='" + id + '\'' +
-                ", username='" + username + '\'' +
-                '}';
-    }
 }
