@@ -3,4 +3,15 @@ dependencies {
     implementation project(':tonk-domain')
     implementation project(':tonk-adapter-repository-in-memory-dummy')
     implementation 'org.springframework.boot:spring-boot-starter-websocket:2.1.7.RELEASE'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.5.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.5.1'
+    testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.1.7.RELEASE') {
+        exclude group: 'junit', module: 'junit'
+    }
+    testCompile group: 'org.mockito', name: 'mockito-core', version: '3.0.0'
+    testCompile group: 'org.assertj', name: 'assertj-core', version: '3.13.2'
+}
+
+test {
+    useJUnitPlatform()
 }
