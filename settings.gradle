@@ -1,13 +1,12 @@
 rootProject.name = 'tonk-backend'
 
 include ':tonk-infrastructure-program-spring-boot'
-include ':tonk-adapter-web-api-spring-boot'
-include ':tonk-adapter-web-api-spring-socket'
+include ':tonk-adapter-web-api'
 include ':tonk-adapter-repository-in-memory-dummy'
 include ':tonk-application'
 include ':tonk-domain'
 
 project(':tonk-infrastructure-program-spring-boot').projectDir = file('tonk-infrastructure/program/spring-boot')
-project(':tonk-adapter-web-api-spring-socket').projectDir = file('tonk-adapter/web-api/spring-socket')
+project(':tonk-adapter-web-api').projectDir = file('tonk-adapter/web-api')
 project(':tonk-adapter-repository-in-memory-dummy').projectDir = file('tonk-adapter/repository/in-memory-dummy')
 
